@@ -1,11 +1,13 @@
-import { ProductsMock } from "../mock/ProductsMock";
+// import { ProductsMock } from "../mock/ProductsMock";
+import { useSelector } from "react-redux";
 import "./Product.css";
-import product1 from "../assets/product1.jpeg";
 
 export const Products = () => {
+  const products = useSelector((state) => state.products);
+
   return (
     <div className="products">
-      {ProductsMock.map((product) => (
+      {products.map((product) => (
         <div key={product.id}>
           <img src={product.image} className="product-image" alt="product" />
           <p id="product-color">{product.name}</p>

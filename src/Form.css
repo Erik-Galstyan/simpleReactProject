@@ -30,6 +30,7 @@ select {
 
 button {
   padding: 8px 16px;
+  width: 260px;
   border: none;
   background-color: #4caf50;
   color: white;

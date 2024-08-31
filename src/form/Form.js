@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux';
-import { addProduct } from './features/productsSlice';
+import { useDispatch } from "react-redux";
+import { addProduct } from "../features/productsSlice";
 import "./Form.css";
 
 const Form = () => {

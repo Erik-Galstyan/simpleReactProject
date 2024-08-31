@@ -1,6 +1,6 @@
-import Form from "./Form";
-import "./App.css";
 import { Products } from "./products/Products";
+import Form from "./form/Form";
+import "./App.css";
 
 const App = () => {
   return (

@@ -1,6 +1,5 @@
 .App {
   display: flex;
-  /* background-image: url('./assets/backgroung-image.jpg'); */
   background-size: cover;
   height: 100vh;
   flex-direction: column;

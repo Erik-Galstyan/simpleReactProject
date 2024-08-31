@@ -26,7 +26,7 @@ const Form = () => {
     dispatch(
       addProduct({
         name: formData.productName,
-        price: formData.price,
+        price: `$ ${formData.price}`,
         image: formData.imageUrl,
         id: `id${Math.random()}`,
       })

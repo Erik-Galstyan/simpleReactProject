@@ -1,0 +1,33 @@
+.products {
+  padding: 50px;
+  flex-direction: row;
+  display: flex;
+  gap: 20px;
+}
+
+.product-parametrs {
+  width: 350px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.product-image {
+  width: 250px;
+  height: 250px;
+}
+
+#product-color {
+  color: black;
+}

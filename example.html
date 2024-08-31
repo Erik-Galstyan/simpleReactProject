@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body style="background-color: rgb(163, 163, 197)">
+    <div class="container">
+      <h1 class="my-4">Products</h1>
+      <div class="row" id="product-list"></div>
+      <h2 class="my-4">Add a New Product</h2>
+      <form id="product-form">
+        <div class="form-group">
+          <label for="name">Product Name</label>
+          <input type="text" class="form-control" id="name" required />
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" class="form-control" id="price" required />
+        </div>
+        <div class="form-group">
+          <label for="image">Image URL</label>
+          <input type="text" class="form-control" id="image" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Product</button>
+      </form>
+    </div>
+    <script>
+      async function loadProducts() {
+        const response = await fetch("/test");
+        const products = await response.json();
+        const productList = document.getElementById("product-list");
+        productList.innerHTML = "";
+        products.forEach((product) => {
+          const productCard = document.createElement("div");
+          productCard.className = "col-md-4";
+          productCard.innerHTML = `
+        <div class="card mb-4 shadow-sm">
+          <img src="${product.image}" class="card-img-top" alt="${product.name}">
+          <div class="card-body">
+            <h5 class="card-title">${product.name}</h5>
+            <p class="card-text">$${product.price}</p>
+          </div>
+        </div>
+      `;
+          productList.appendChild(productCard);
+        });
+      }
+      document
+        .getElementById("product-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const name = document.getElementById("name").value;
+          const price = document.getElementById("price").value;
+          const image = document.getElementById("image").value;
+          await fetch("/test", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, price, image }),
+          });
+          document.getElementById("product-form").reset();
+          loadProducts();
+        });
+      loadProducts();
+    </script>
+  </body>
+</html>
